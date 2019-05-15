@@ -42,13 +42,6 @@ class Signup extends React.Component {
                 onChange={this.handleChange}
                 placeholder="Choose a Password"
               />
-               <input
-                type="password"
-                name="password"
-                value={this.state.credentials.password}
-                onChange={this.handleChange}
-                placeholder="Repeat Password"
-              />
               <button>Sign Up</button>
             </form>
           </div>

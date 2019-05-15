@@ -11,7 +11,7 @@ function App() {
       <div className="App">
 
       <div className="App-header ">
-          <h1>Foodie Fun App</h1>
+          <h1>What's In My Belly ?!</h1>
         </div>
       <div className="nav-links">
       <ul>
