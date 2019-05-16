@@ -2,9 +2,9 @@ import {
     LOGIN_START,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    FETCH_DATA_START,
-    FETCH_DATA_SUCCESS,
-    FETCH_DATA_FAILURE
+    FETCH_FOOD_START,
+    FETCH_FOOD_SUCCESS,
+    FETCH_FOOD_FAILURE
   } from '../actions';
   
   const initialState = {
