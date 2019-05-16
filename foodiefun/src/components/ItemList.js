@@ -9,7 +9,7 @@ function ItemList() {
       {items.map(item => (
         <div className="item-card" key={item.id}>
           <Link to={`/item-list/${item.id}`}>
-            <p>{item.restaurant_name}</p>
+            <h2>{item.restaurant_name}</h2>
             <p>${item.item_name}</p>
           </Link>
         </div>

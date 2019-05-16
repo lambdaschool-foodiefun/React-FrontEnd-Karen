@@ -4,15 +4,15 @@ import './index.css';
 import "./App.css";
 import App from './App';
 import {createStore, applyMiddleware} from "redux";
-import {Provider} from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom"
 import thunk from "redux-thunk";
 import reducer from "./reducers";
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Router store={store}>
         <App/>
-    </Provider>,
+    </Router>,
     document.getElementById("root")
 );
