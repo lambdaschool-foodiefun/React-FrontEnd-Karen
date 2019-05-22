@@ -10,7 +10,8 @@ import {
   const initialState = {
     error: '',
     fetchingFood:false,
-    loggingIn: false,  
+    loggingIn: false, 
+    meals: false, 
   };
 
   const reducer = (state = initialState, action) => {
@@ -19,12 +20,24 @@ import {
       return {
         ...state,
         error: '',
-        errorStatusCode: null,
         fetchingFood: false,
         loggingIn: true
       };
+      case LOGIN_SUCCESS:
+      return { 
+        ...state,
+       fetchingFood: false,
+        error: "",
+      };
+    case LOGIN_FAILURE:
+      return {
+       ...state,
+      fetchingFood: false,
+       error: action.payload,    
+      };
       default:
       return state;
-    }
+    };
+
 }
 export default reducer

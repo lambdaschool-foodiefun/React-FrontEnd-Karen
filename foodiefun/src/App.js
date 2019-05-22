@@ -20,11 +20,12 @@ class App extends React.Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
       
         <div className="nav-links">
           <Link to="/">Home</Link>
-          <Link to="/item-list">ItemList</Link>
+          <Link to="/item-list">Restaurants</Link>
           <Link to="/signup">SignUp</Link>
           <Link to="/login">LogIn</Link>
       
@@ -44,6 +45,7 @@ class App extends React.Component {
         <Route exact path="/signup" render={() => <Signup />} />
         <Route exact path="/login" render={() => <Login />} />
       </div>
+      </Router>
     );
   }
 }
