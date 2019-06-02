@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 import {login} from "../actions"
 
 
@@ -29,6 +30,7 @@ class Login extends React.Component {
       render() {
         return (
           <div className="loginForm">
+            <p>Log in here to access your personal food journal.</p>
             <form onSubmit={this.login}>
               <input
                 type="text"
@@ -46,6 +48,7 @@ class Login extends React.Component {
               />
               <button>Log in</button>
             </form>
+            <p>Not a  Member? Sign up   <Link to="/signup">here</Link>.</p>
           </div>
         );
       }
