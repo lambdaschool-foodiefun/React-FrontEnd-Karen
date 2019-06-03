@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import AxiosWithAuth from "../components/AxiosWithAuth";
+import axiosWithAuth from "../axiosWithAuth";
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -37,7 +37,7 @@ export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_START });
-  AxiosWithAuth()
+  axiosWithAuth()
     .get("https://backend-foodie-fun.herokuapp.com/api/meals/", {
       headers: { Authorization: localStorage.getItem("token") }
     })
@@ -56,7 +56,7 @@ export const ADD_SUCCESS = "ADD_SUCCESS";
 export const ADD_FAILURE = "ADD_FAILURE";
 export const addData = () => dispatch => {
   dispatch({ type: ADD_START });
-  AxiosWithAuth()
+  axiosWithAuth()
     .put("https://backend-foodie-fun.herokuapp.com/api/meals/id", {
       headers: { Authorization: localStorage.getItem("token") }
     })
@@ -76,7 +76,7 @@ export const DELETE_SUCCESS = "DELETE_SUCCESS";
 export const DELETE_FAILURE = "DELETE_FAILURE";
 export const deleteData = id => dispatch => {
   dispatch({ type: DELETE_START });
-  AxiosWithAuth()
+  axiosWithAuth()
     .get("https://backend-foodie-fun.herokuapp.com/api/meals/id", {
       headers: { Authorization: localStorage.getItem("token") }
     })

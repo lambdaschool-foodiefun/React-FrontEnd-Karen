@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getData } from "../actions";
-import ItemList from "./ItemList";
 
 
 class MenuList extends React.Component {

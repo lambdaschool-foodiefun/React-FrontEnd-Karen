@@ -33,8 +33,11 @@
 }
  
 .nav-links {
+  display: flex;
   font-family: Didot; 
-  font-size: 25px;
+  font-size: 15px;
+  justify-content: space-between;
+ 
 }
 
 

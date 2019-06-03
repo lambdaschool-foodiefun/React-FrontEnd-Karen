@@ -26,7 +26,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoggingIn: true,
         isSigningUp: false,
-        error: ""
       };
     case LOGIN_SUCCESS:
       return {

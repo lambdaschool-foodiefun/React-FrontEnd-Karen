@@ -70,7 +70,7 @@ class App extends React.Component {
             <Link to="/">Home</Link>
             <Link to="/signup">SignUp</Link>
             <Link to="/login">LogIn</Link>
-            <Link to="/protected">Protected Page</Link>
+            <Link to="/protected">Personal Menu List</Link>
           </div>
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" render={() => <Signup />} />
