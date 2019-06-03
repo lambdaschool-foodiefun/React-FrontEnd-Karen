@@ -1,6 +1,8 @@
 import React from "react";
 
-import items from "../data";
+import items from "../dummyData.js";
+
+//This works with data.js file only
 
 function Item(props) {
   const id = props.match.params.id;

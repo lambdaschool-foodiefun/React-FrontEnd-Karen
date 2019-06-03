@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import items from "../data";
+import items from "../dummyData.js";
+//This works with data.js only
 
 function ItemList() {
   return (

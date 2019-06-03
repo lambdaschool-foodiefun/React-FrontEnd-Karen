@@ -1,46 +1,88 @@
 import {
-    LOGIN_START,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    SIGNUP_START,
-    SIGNUP_SUCCESS,
-    SIGNUP_FAILURE,
-    FETCH_FOOD_START,
-    FETCH_FOOD_SUCCESS,
-    FETCH_FOOD_FAILURE
-  } from '../actions';
-  
-  const initialState = {
-    error: '',
-    fetchingFood:false,
-    loggingIn: false, 
-    meals: false, 
-  };
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  SIGNUP_START,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
+  FETCH_START,
+  FETCH_SUCCESS,
+  FETCH_FAILURE
+} from "../actions";
 
-  const reducer = (state = initialState, action) => {
-    switch (action.type) {
-      case LOGIN_START:
+const initialState = {
+  error: "",
+  errorStatusCode: null,
+  fetchingData: false,
+  isLoggingIn: false,
+  isSigningUp: false,
+  meals: []
+};
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOGIN_START:
       return {
         ...state,
-        error: '',
-        fetchingFood: false,
-        loggingIn: true
+        isLoggingIn: true,
+        isSigningUp: false,
+        error: ""
       };
-      case LOGIN_SUCCESS:
-      return { 
+    case LOGIN_SUCCESS:
+      return {
         ...state,
-       fetchingFood: false,
-        error: "",
+        isLoggingIn: false,
+        isSigningUp: false
       };
     case LOGIN_FAILURE:
       return {
-       ...state,
-      fetchingFood: false,
-       error: action.payload,    
+        ...state,
+        isLoggingIn: false,
+        isSigningUp: false,
+        error: action.payload
       };
-      default:
+    case SIGNUP_START:
+      return {
+        ...state,
+        isLoggingIn: false,
+        isSigningUp: true,
+        error: ""
+      };
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        isLoggingIn: false,
+        isSigningUp: false
+      };
+    case SIGNUP_FAILURE:
+      return {
+        ...state,
+        isLoggingIn: false,
+        isSigningUp: false,
+        error: action.payload
+      };
+    case FETCH_START:
+      return {
+        ...state,
+        fetchingData: true
+      };
+    case FETCH_FAILURE:
+      return {
+        ...state,
+        fetchingData: false,
+        errorStatusCode: action.payload.status,
+        error: action.payload.data.error
+      };
+    case FETCH_SUCCESS:
+      return {
+        ...state,
+        fetchingData: false,
+        errorStatusCode: null,
+        meals: action.payload
+      };
+    default:
       return state;
-    };
+  }
+};
 
-}
-export default reducer
+export default reducer;
