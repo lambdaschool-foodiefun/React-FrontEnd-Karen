@@ -28,13 +28,13 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    axios
-      .post("https://backend-foodie-fun.herokuapp.com/api/auth/login")
-      .then(response => this.setState({ items: response.data }))
-      .catch(error => console.log(error));
-    this.setState({});
-  }
+  // componentDidMount() {
+  //   axios
+  //     .post("https://backend-foodie-fun.herokuapp.com/api/auth/login")
+  //     .then(response => this.setState({ items: response.data }))
+  //     .catch(error => console.log(error));
+  //   this.setState({});
+  // }
 
   handleLogin = creds => {
     axios
@@ -74,7 +74,7 @@ class App extends React.Component {
           </div>
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" render={() => <Signup />} />
-          <Route exact path="/login" render={() => <Login />} />
+          <Route exact path="/login" render={(props) => <Login {...props}/>} />
           <PrivateRoute exact path="/protected" component={MenuList} />
         </div>
       </Router>

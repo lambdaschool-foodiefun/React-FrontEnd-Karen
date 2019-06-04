@@ -21,9 +21,9 @@ class Signup extends React.Component {
 
   signup = event => {
     event.preventDefault();
-    this.props.signup(this.state.newCreds).then(() => {
-      this.props.history.push("/protected");
-    });
+    console.log(this.state.newCreds);
+    this.props.signup(this.state.newCreds)
+    
   };
 
   render() {

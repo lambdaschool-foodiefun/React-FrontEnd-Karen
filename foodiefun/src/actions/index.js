@@ -5,11 +5,12 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const login = creds => dispatch => {
+  console.log(creds);
   dispatch({ type: LOGIN_START });
   return axios
-    .post(" https://backend-foodie-fun.herokuapp.com/api/auth/login", creds)
+    .post(" https://backend-foodie-fun.herokuapp.com/api/auth/login", {username: creds.username, password:creds.password})
     .then(response => {
-      localStorage.setItem("token", response.data.payload);
+      localStorage.setItem("token", response.data.token);
       dispatch({ type: "LOGIN_SUCCESS", payload: response.data.payload });
     })
     .catch(error => dispatch({ type: LOGIN_FAILURE, payload: error }));
@@ -19,14 +20,16 @@ export const SIGNUP_START = "SIGNUP_START";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
 export const signup = newCreds => dispatch => {
+  
   dispatch({ type: SIGNUP_START });
   return axios
     .post(
       " https://backend-foodie-fun.herokuapp.com/api/auth/register",
-      newCreds
+      {username: newCreds.username, password: newCreds.password}
     )
     .then(response => {
-      localStorage.setItem("token", response.data.payload);
+      console.log(response.data)
+      localStorage.setItem("token", response.data.token);
       dispatch({ type: "SIGNUP_SUCCESS", payload: response.data.payload });
     })
     .catch(error => dispatch({ type: SIGNUP_FAILURE, payload: error }));
@@ -37,7 +40,7 @@ export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_START });
-  axiosWithAuth()
+  axios
     .get("https://backend-foodie-fun.herokuapp.com/api/meals/", {
       headers: { Authorization: localStorage.getItem("token") }
     })
