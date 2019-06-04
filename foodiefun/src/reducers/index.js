@@ -16,6 +16,7 @@ const initialState = {
   fetchingData: false,
   isLoggingIn: false,
   isSigningUp: false,
+  token: localStorage.getItem('token'),
   meals: []
 };
 
@@ -31,7 +32,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggingIn: false,
-        isSigningUp: false
+        isSigningUp: false,
+        token: action.payload,
       };
     case LOGIN_FAILURE:
       return {

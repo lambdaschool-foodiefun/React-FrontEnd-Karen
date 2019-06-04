@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      meal:[],
+      meals:[],
       newMeal:{
       account: true,
       data: [],

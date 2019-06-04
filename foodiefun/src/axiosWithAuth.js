@@ -1,8 +1,8 @@
-import Axios from "axios";
+import axios from "axios";
 
 const axiosWithAuth = () => {
   const token = localStorage.getItem("token");
-  return Axios.create({
+  return axios.create({
     headers: { authorization: token }
   });
 };

@@ -1,6 +1,5 @@
-
 import axios from "axios";
-import axiosWithAuth from "../axiosWithAuth";
+import   axiosWithAuth   from "../axiosWithAuth";
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -16,21 +15,22 @@ export const login = creds => dispatch => {
     .catch(error => dispatch({ type: LOGIN_FAILURE, payload: error }));
 };
 
-
 export const SIGNUP_START = "SIGNUP_START";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
 export const signup = newCreds => dispatch => {
   dispatch({ type: SIGNUP_START });
   return axios
-    .post(" https://backend-foodie-fun.herokuapp.com/api/auth/register", newCreds)
+    .post(
+      " https://backend-foodie-fun.herokuapp.com/api/auth/register",
+      newCreds
+    )
     .then(response => {
       localStorage.setItem("token", response.data.payload);
       dispatch({ type: "SIGNUP_SUCCESS", payload: response.data.payload });
     })
     .catch(error => dispatch({ type: SIGNUP_FAILURE, payload: error }));
 };
-
 
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
@@ -61,15 +61,13 @@ export const addData = () => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
-      dispatch({ type:ADD_SUCCESS, payload: response.data.data });
+      dispatch({ type: ADD_SUCCESS, payload: response.data.data });
     })
     .catch(error => {
       console.log(error.response);
       dispatch({ type: ADD_FAILURE, payload: error.response });
     });
 };
-
-
 
 export const DELETE_START = "DELETE_START";
 export const DELETE_SUCCESS = "DELETE_SUCCESS";
@@ -81,13 +79,10 @@ export const deleteData = id => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
-      dispatch({ type:DELETE_SUCCESS, payload: response.data.data });
+      dispatch({ type: DELETE_SUCCESS, payload: response.data.data });
     })
     .catch(error => {
       console.log(error.response);
       dispatch({ type: DELETE_FAILURE, payload: error.response });
     });
 };
-
-
-

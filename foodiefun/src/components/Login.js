@@ -6,15 +6,15 @@ import {login} from "../actions"
 
 class Login extends React.Component {
     state = {
-        credentials: {
+        creds: {
             username:"",
             password:"",
         }
     }
     handleChange = event => {
         this.setState({
-          credentials: {
-            ...this.state.credentials,
+          creds: {
+            ...this.state.creds,
             [event.target.name]: event.target.value
           }
         });
@@ -22,7 +22,8 @@ class Login extends React.Component {
     
       login = event => {
         event.preventDefault();
-        this.props.login(this.state.credentials).then(() => {
+        this.props.login(this.state.creds)
+        .then(() => {
           this.props.history.push('/protected');
         });
       };
@@ -35,25 +36,29 @@ class Login extends React.Component {
               <input
                 type="text"
                 name="username"
-                value={this.state.credentials.username}
+                value={this.state.creds.username}
                 onChange={this.handleChange}
                 placeholder="Username"
               />
               <input
                 type="password"
                 name="password"
-                value={this.state.credentials.password}
+                value={this.state.creds.password}
                 onChange={this.handleChange}
                 placeholder="Password"
               />
-              <button>Log in</button>
+              <button>{this.props.isLogging ? "Loading..." : "Log in"}</button>
             </form>
             <p>Not a  Member? Sign up   <Link to="/signup">here</Link>.</p>
           </div>
         );
       }
 }
+
+const mapStateToProps = state => ({
+  isLoggingIn: state.isLoggingIn
+});
 export default connect(
-  null,
+  mapStateToProps,
   { login }
 )(Login);
