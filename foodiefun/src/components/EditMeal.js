@@ -1,17 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
-import { addMeal} from "../actions";
+import { editMeal} from "../actions";
 
-class AddMeal extends React.Component {
+class EditMeal extends React.Component {
     state = {
-        meal:{
-          restaurant_name:"",
-          restaurant_type:"",
-          item_name:"",
-          food_rating:"",
-          item_comment:""
-         
-    }
+        meal:this.props.meal
   }
 
 
@@ -27,27 +20,14 @@ handleChanges = event => {
         }
     })
 }
- addMeal = event => {
+ editMeal = event => {
     event.preventDefault();
-     this.props.addMeal(this.state.meal)
-    //  .then(() => {this.props.history.push("/protected");
-    // });
-    this.setState({
-        meals: {
-            restaurant_name:"",
-            restaurant_type:"",
-            item_name:"",
-            food_rating:"",
-            item_comment:""
-           
-        }
-    })
+     this.props.editMeal(this.state.meal)
  }
 render() {
     return(
         <div className="meal-form">
-            <h2>Add New Meal</h2>
-            <form onSubmit={this.addMeal}>
+            <form className="edit-form" onSubmit={this.editMeal}>
          
           <input
             type="text"
@@ -87,7 +67,7 @@ render() {
             value={this.state.meal.item_comment}
           />
            <button>
-            {this.props.addingMeal ? "Adding...": "Add Meal"}
+            {this.props.addingMeal ? "Editinging...": "Edit Meal"}
           </button>
         </form>
         </div>
@@ -96,10 +76,10 @@ render() {
 }
 
 const mapStateToProps = state => ({
-  addingMeal: state.addingMeal
+  editingMeal: state.editingMeal
  })
   
   export default connect(
     mapStateToProps,
-    { addMeal }
-  )(AddMeal);
+    { editMeal }
+  )(EditMeal);

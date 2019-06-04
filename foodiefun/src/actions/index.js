@@ -1,5 +1,5 @@
 import axios from "axios";
-import   axiosWithAuth   from "../axiosWithAuth";
+// import   axiosWithAuth   from "../axiosWithAuth";
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -40,7 +40,7 @@ export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_START });
-  axios
+  return axios
     .get("https://backend-foodie-fun.herokuapp.com/api/meals/", {
       headers: { Authorization: localStorage.getItem("token") }
     })
@@ -57,9 +57,9 @@ export const getData = () => dispatch => {
 export const ADD_START = "ADD_START";
 export const ADD_SUCCESS = "ADD_SUCCESS";
 export const ADD_FAILURE = "ADD_FAILURE";
-export const addData = meal => dispatch => {
+export const addMeal = meal => dispatch => {
   dispatch({ type: ADD_START });
-  axiosWithAuth()
+  return axios
     .post("https://backend-foodie-fun.herokuapp.com/api/meals",meal, {
       headers: { Authorization: localStorage.getItem("token") }
     })
@@ -76,17 +76,26 @@ export const addData = meal => dispatch => {
 export const DELETE_START = "DELETE_START";
 export const DELETE_SUCCESS = "DELETE_SUCCESS";
 export const DELETE_FAILURE = "DELETE_FAILURE";
-export const deleteData = id => dispatch => {
+export const deleteMeal = id => dispatch => {
   dispatch({ type: DELETE_START });
-  axiosWithAuth()
-    .get("https://backend-foodie-fun.herokuapp.com/api/meals/id", {
+  return axios
+    .delete("https://backend-foodie-fun.herokuapp.com/api/meals/id", {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
-      dispatch({ type: DELETE_SUCCESS, payload: response.data.data });
+      dispatch({ type: DELETE_SUCCESS, payload: response.data });
     })
     .catch(error => {
       console.log(error.response);
       dispatch({ type: DELETE_FAILURE, payload: error.response });
     });
 };
+
+export const EDIT_START = "EDIT_START";
+export const EDIT_SUCCESS = "EDIT_SUCCESS";
+export const EDIT_FAILURE = "EDIT_FAILURE";
+export const editMeal = () => dispatch => {
+  dispatch({type:EDIT_START});
+  return axios
+  .put("https://backend-foodie-fun.herokuapp.com/api/meals/id")
+}
