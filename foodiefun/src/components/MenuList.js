@@ -22,7 +22,7 @@ class MenuList extends React.Component {
             <p>{meal.item_comment}</p>
             <p>{meal.wait_time}</p>
             <p>{meal.date_visited}</p>
-            <p>{meal.id}</p> */}
+            <p>{meal.id}</p> 
            </div>
         ))}
       </div>
