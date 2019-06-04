@@ -20,8 +20,6 @@ class MenuList extends React.Component {
             <p>{meal.item_name}</p>
             <p>{meal.food_rating}</p>
             <p>{meal.item_comment}</p>
-            <p>{meal.wait_time}</p>
-            <p>{meal.date_visited}</p>
             <p>{meal.id}</p> 
            </div>
         ))}
@@ -33,7 +31,7 @@ class MenuList extends React.Component {
 const mapStateToProps = state => {
   return {
     meals: state.meals,
-    fetchingData: state.fetchingData
+    fetchingData: state.fetchingData,
   };
 };
 

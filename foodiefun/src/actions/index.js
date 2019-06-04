@@ -57,14 +57,15 @@ export const getData = () => dispatch => {
 export const ADD_START = "ADD_START";
 export const ADD_SUCCESS = "ADD_SUCCESS";
 export const ADD_FAILURE = "ADD_FAILURE";
-export const addData = () => dispatch => {
+export const addData = meal => dispatch => {
   dispatch({ type: ADD_START });
   axiosWithAuth()
-    .put("https://backend-foodie-fun.herokuapp.com/api/meals/id", {
+    .post("https://backend-foodie-fun.herokuapp.com/api/meals",meal, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
-      dispatch({ type: ADD_SUCCESS, payload: response.data.data });
+      console.log(response)
+      dispatch({ type: ADD_SUCCESS, payload: response.data });
     })
     .catch(error => {
       console.log(error.response);

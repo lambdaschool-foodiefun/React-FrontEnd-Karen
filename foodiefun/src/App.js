@@ -6,6 +6,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import PrivateRoute from "./components/PrivateRoute";
 import MenuList from "./components/MenuList";
+import AddMeal from "./components/AddMeal"
 
 class App extends React.Component {
   // add constructor and CDM
@@ -62,6 +63,15 @@ class App extends React.Component {
       });
   };
 
+
+
+
+ 
+  handleSignOut = () => {
+    localStorage.removeItem("token");
+    this.props.history.push("/");
+  };
+
   render() {
     return (
       <Router>
@@ -70,12 +80,14 @@ class App extends React.Component {
             <Link to="/">Home</Link>
             <Link to="/signup">SignUp</Link>
             <Link to="/login">LogIn</Link>
-            <Link to="/protected">Personal Menu List</Link>
+            <Link to="/protected">Member Menu List</Link>
+            <Link to="/meal-form">Add Meal</Link>
           </div>
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" render={() => <Signup />} />
           <Route exact path="/login" render={(props) => <Login {...props}/>} />
           <PrivateRoute exact path="/protected" component={MenuList} />
+          <PrivateRoute exact path="/meal-form" component={AddMeal} />
         </div>
       </Router>
     );

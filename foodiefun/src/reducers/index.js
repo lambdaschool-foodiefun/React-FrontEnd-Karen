@@ -7,7 +7,10 @@ import {
   SIGNUP_FAILURE,
   FETCH_START,
   FETCH_SUCCESS,
-  FETCH_FAILURE
+  FETCH_FAILURE,
+  ADD_START,
+  ADD_SUCCESS,
+
 } from "../actions";
 
 const initialState = {
@@ -16,6 +19,7 @@ const initialState = {
   fetchingData: false,
   isLoggingIn: false,
   isSigningUp: false,
+  addingMeal: false,
   token: localStorage.getItem('token'),
   meals: []
 };
@@ -78,6 +82,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingData: false,
+        errorStatusCode: null,
+        meals: action.payload
+      };
+      case ADD_START:
+      return {
+        ...state,
+        addingMeal: true
+      };
+    case ADD_SUCCESS:
+      return {
+        ...state,
+        addingMeal: false,
+        error: '',
         errorStatusCode: null,
         meals: action.payload
       };
