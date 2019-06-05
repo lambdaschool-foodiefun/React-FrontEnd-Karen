@@ -97,5 +97,14 @@ export const EDIT_FAILURE = "EDIT_FAILURE";
 export const editMeal = () => dispatch => {
   dispatch({type:EDIT_START});
   return axios
-  .put("https://backend-foodie-fun.herokuapp.com/api/meals/id")
-}
+  .put("https://backend-foodie-fun.herokuapp.com/api/meals/id", {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(response => {
+      dispatch({ type: EDIT_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      console.log(error.response);
+      dispatch({ type: EDIT_FAILURE, payload: error.response });
+    });
+};

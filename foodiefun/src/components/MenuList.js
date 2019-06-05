@@ -22,7 +22,7 @@ class MenuList extends React.Component {
   editMeal = (event, meal) => {
     event.preventDefault();
     this.props.editMeal(meal).then(() => {
-      this.setState({ editingFriendId: null });
+      this.setState({ editingMealId: null });
     });
   };
 

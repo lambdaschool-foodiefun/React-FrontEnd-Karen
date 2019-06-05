@@ -10,7 +10,13 @@ import {
   FETCH_FAILURE,
   ADD_START,
   ADD_SUCCESS,
-
+  ADD_FAILURE,
+  EDIT_START,
+  EDIT_SUCCESS,
+  EDIT_FAILURE,
+  DELETE_START,
+  DELETE_SUCCESS,
+  DELETE_FAILURE,
 } from "../actions";
 
 const initialState = {
@@ -20,6 +26,8 @@ const initialState = {
   isLoggingIn: false,
   isSigningUp: false,
   addingMeal: false,
+  editingMeal: false,
+  deletingMeal: false,
   token: localStorage.getItem('token'),
   meals: []
 };
@@ -90,7 +98,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         addingMeal: true
       };
-    case ADD_SUCCESS:
+     case ADD_SUCCESS:
       return {
         ...state,
         addingMeal: false,
@@ -98,9 +106,37 @@ const reducer = (state = initialState, action) => {
         errorStatusCode: null,
         meals: action.payload
       };
+      case EDIT_START:
+        return {
+          ...state,
+          editingMeal: true
+        };
+      case EDIT_SUCCESS:
+        return {
+          ...state,
+          editingMeal: false,
+          error: '',
+          errorStatusCode: null,
+          meals: action.payload
+        };
+        case DELETE_START:
+          return {
+            ...state,
+            deletingMeal: true
+          };
+        case DELETE_SUCCESS:
+          return {
+            ...state,
+            deletingMeal: false,
+            error: '',
+            errorStatusCode: null,
+            meal: action.payload
+          };
+
     default:
       return state;
   }
 };
+
 
 export default reducer;

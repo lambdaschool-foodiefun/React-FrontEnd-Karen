@@ -1,6 +1,4 @@
 import React from "react";
-import {connect} from "react-redux";
-import { editMeal} from "../actions";
 
 class EditMeal extends React.Component {
     state = {
@@ -22,12 +20,12 @@ handleChanges = event => {
 }
  editMeal = event => {
     event.preventDefault();
-     this.props.editMeal(this.state.meal)
+     this.props.editMeal(event,this.state.meal)
  }
 render() {
     return(
         <div className="meal-form">
-            <form className="edit-form" onSubmit={this.editMeal}>
+            <form className="edit-form" onSubmit={this.editMeal} >
          
           <input
             type="text"
@@ -67,7 +65,7 @@ render() {
             value={this.state.meal.item_comment}
           />
            <button>
-            {this.props.addingMeal ? "Editinging...": "Edit Meal"}
+            {this.props.editingMeal ? "Editing...": "Edit Meal"}
           </button>
         </form>
         </div>
@@ -75,11 +73,4 @@ render() {
   }
 }
 
-const mapStateToProps = state => ({
-  editingMeal: state.editingMeal
- })
-  
-  export default connect(
-    mapStateToProps,
-    { editMeal }
-  )(EditMeal);
+export default EditMeal
