@@ -46,13 +46,15 @@ class MenuList extends React.Component {
           }
           return (
             <div className="meal-card">
-            <button  onClick={() => this.setState({ editingMealId: meal.id })}>
-              Edit
-            </button>
-            
-            <button onClick={() => this.deleteMeal(meal.id)}>
-              Delete
-            </button>
+            <i
+              class="fas fa-edit"
+              onClick={() => this.setState({ editingMealId: meal.id })}
+            />
+
+            <i
+              class="fas fa-times"
+              onClick={() => this.deleteMeal(meal.id)}
+            />
               <h4>{meal.restaurant_name}</h4>
               <p>{meal.restaurant_type}</p>
               <p>{meal.item_name}</p>
