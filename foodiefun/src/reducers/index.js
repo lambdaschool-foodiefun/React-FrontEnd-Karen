@@ -1,22 +1,10 @@
 import {
-  LOGIN_START,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  SIGNUP_START,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
-  FETCH_START,
-  FETCH_SUCCESS,
-  FETCH_FAILURE,
-  ADD_START,
-  ADD_SUCCESS,
-  ADD_FAILURE,
-  EDIT_START,
-  EDIT_SUCCESS,
-  EDIT_FAILURE,
-  DELETE_START,
-  DELETE_SUCCESS,
-  DELETE_FAILURE,
+  LOGIN_START,LOGIN_SUCCESS,LOGIN_FAILURE,
+  SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_FAILURE,
+  FETCH_START,FETCH_SUCCESS, FETCH_FAILURE,
+  ADD_START,ADD_SUCCESS,ADD_FAILURE,
+  EDIT_START,EDIT_SUCCESS,EDIT_FAILURE,
+  DELETE_START, DELETE_SUCCESS,DELETE_FAILURE,
 } from "../actions";
 
 const initialState = {
@@ -106,6 +94,13 @@ const reducer = (state = initialState, action) => {
         errorStatusCode: null,
         meals: action.payload
       };
+      case ADD_FAILURE:
+        return {
+          ...state,
+          addingMeal: false,
+          errorStatusCode: action.payload.status,
+          error: action.payload.data.error,
+        }
       case EDIT_START:
         return {
           ...state,
@@ -119,6 +114,12 @@ const reducer = (state = initialState, action) => {
           errorStatusCode: null,
           meals: action.payload
         };
+        case EDIT_FAILURE:
+          return{
+            ...state,
+            errorStatusCode: action.payload.status,
+            error: action.payload.data.error
+          }
         case DELETE_START:
           return {
             ...state,
@@ -132,6 +133,12 @@ const reducer = (state = initialState, action) => {
             errorStatusCode: null,
             meal: action.payload
           };
+          case DELETE_FAILURE:
+            return {
+              ...state,
+              errorStatusCode: action.payload.status,
+              error: action.payload.data.error
+            }
 
     default:
       return state;
