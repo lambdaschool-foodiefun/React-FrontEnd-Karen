@@ -46,23 +46,27 @@ class MenuList extends React.Component {
           }
           return (
             <div className="meal-card">
+              <div className="edit-delete-meal">
             <i
               class="fas fa-edit"
               onClick={() => this.setState({ editingMealId: meal.id })}
             />
-
             <i
               class="fas fa-times"
               onClick={() => this.deleteMeal(meal.id)}
             />
+            </div>
+            <div className="meal-entry">
               <h4>{meal.restaurant_name}</h4>
               <p>{meal.restaurant_type}</p>
               <p>{meal.item_name}</p>
               <p>{meal.food_rating}</p>
               <p>{meal.item_comment}</p>
+              </div>
               {this.state.deletingMeal && 
                 this.state.deletingMealId===meal.id && (
                   <p>Deleting Meal</p>
+                 
                 )}
 
             </div>

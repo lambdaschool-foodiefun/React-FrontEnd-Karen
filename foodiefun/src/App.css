@@ -42,5 +42,14 @@
 .meal-card {
   border: 3px solid black;
 }
+.edit-delete-meal {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0;
+  margin-left:250px;
+  width: 170px;
+  /* border: 3px solid magenta; */
+}
+
 
 

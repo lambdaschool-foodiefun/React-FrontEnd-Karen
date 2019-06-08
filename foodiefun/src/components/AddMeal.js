@@ -14,7 +14,6 @@ class AddMeal extends React.Component {
     }
   }
 
-
 handleChanges = event => {
     let value = event.target.value;
     if(event.target.name ==="food_rating") {

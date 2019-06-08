@@ -79,7 +79,7 @@ export const DELETE_FAILURE = "DELETE_FAILURE";
 export const deleteMeal = id => dispatch => {
   dispatch({ type: DELETE_START });
   return axios
-    .delete("https://backend-foodie-fun.herokuapp.com/api/meals/id", {
+    .delete(`https://backend-foodie-fun.herokuapp.com/api/meals/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
