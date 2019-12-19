@@ -1,0 +1,55 @@
+.App {
+  text-align: center;
+  height: 100%;
+  margin-left: 7.5%;
+  margin-right:7.5%;
+  width:  85%;
+ 
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?cs=srgb&dl=almonds-berries-blackberries-1099680.jpg&fm=jpg");
+  height: 300px;
+  font-family: Didot;
+  font-size: 40px;
+  margin-top: 20px;
+  border: 3px solid midnightblue;
+  border-radius: 10%;
+  color: midnightblue;
+}
+
+.signupForm, .loginForm { 
+  width: 55%;
+  margin-left: 25%;
+}
+ 
+.nav-links {
+  display: flex;
+  font-family: Didot; 
+  font-size: 15px;
+  justify-content: space-between;
+ 
+}
+.meal-card {
+  border: 3px solid black;
+}
+.edit-delete-meal {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0;
+  margin-left:250px;
+  width: 170px;
+  /* border: 3px solid magenta; */
+}
+
+
+
